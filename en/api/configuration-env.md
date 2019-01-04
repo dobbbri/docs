@@ -42,6 +42,20 @@ export default axios.create({
 
 Then, in your pages, you can import axios like this: `import axios from '~/plugins/axios'`
 
+
+## In Server side
+
+`server/index.js`:
+
+```js
+let config = require('../nuxt.config.js')
+
+const app = express()
+app.set('port', config.env.port)
+
+```
+process.env not work, you need import nuxt.config.js to have access to env. vars.
+
 ## Automatic injection of environment variables
 
 If you define environment variables starting with `NUXT_ENV_` in the build phase (f.ex. `NUXT_ENV_COOL_WORD=freezing nuxt build`, they'll be automatically injected into the process environment. Be aware that they'll potentially take precedence over defined variables in your `nuxt.config.js` with the same name.
